@@ -7,11 +7,12 @@ def main() -> None:
         print("""\n===== Student Management System =====
         1. Add Student
         2. View Students
-        3. Exit\n""")
+        3. Remove Student
+        4. Exit\n""")
         
         try:
             n = int(input("Enter your choice: "))
-            if n == 3:
+            if n == 4:
                 print("Goodbye!")
                 return
             elif n == 1:
@@ -35,9 +36,18 @@ def main() -> None:
             elif n == 2:
                 if students:
                     for student in students:
-                            print(f"{student.name} - {student.grade}")
+                        print(f"{student.name} - {student.grade}")
                 else:
                     print("\nYou haven't added a student yet!")
+            elif n == 3:
+                name = input("Student name: ")
+                for student in students:
+                    if student.name == name:
+                        students.remove(student)
+                        print("\nStudent removed successfully!")
+                        break
+                else:
+                    print("\nStudent not found.")
             else:
                 print("\nEnter valid number")
         except ValueError as e:
